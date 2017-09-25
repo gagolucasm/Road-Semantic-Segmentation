@@ -1,36 +1,39 @@
 # Semantic Segmentation
 ### Introduction
-In this project, you'll label the pixels of a road in images using a Fully Convolutional Network (FCN).
+In this project, the pixels of the road of some images will be labeled using a Fully Convolutional Network (FCN).
+
+![alt text](results/results.gif)
 
 ### Setup
 ##### Frameworks and Packages
 Make sure you have the following is installed:
  - [Python 3](https://www.python.org/)
- - [TensorFlow](https://www.tensorflow.org/)
- - [NumPy](http://www.numpy.org/)
- - [SciPy](https://www.scipy.org/)
+ - [TensorFlow 1.0](https://www.tensorflow.org/)
+ - [NumPy 1.12](http://www.numpy.org/)
+ - [SciPy 0.19](https://www.scipy.org/)
 ##### Dataset
 Download the [Kitti Road dataset](http://www.cvlibs.net/datasets/kitti/eval_road.php) from [here](http://www.cvlibs.net/download.php?file=data_road.zip).  Extract the dataset in the `data` folder.  This will create the folder `data_road` with all the training a test images.
 
 ### Start
-##### Implement
-Implement the code in the `main.py` module indicated by the "TODO" comments.
-The comments indicated with "OPTIONAL" tag are not required to complete.
+
 ##### Run
 Run the following command to run the project:
 ```
 python main.py
 ```
-**Note** If running this in Jupyter Notebook system messages, such as those regarding test status, may appear in the terminal rather than the notebook.
 
-### Submission
-1. Ensure you've passed all the unit tests.
-2. Ensure you pass all points on [the rubric](https://review.udacity.com/#!/rubrics/989/view).
-3. Submit the following in a zip file.
- - `helper.py`
- - `main.py`
- - `project_tests.py`
- - Newest inference images from `runs` folder  (**all images from the most recent run**)
- 
- ## How to write a README
-A well written README file can enhance your project and portfolio.  Develop your abilities to create professional README files by completing [this free course](https://www.udacity.com/course/writing-readmes--ud777).
+### Information
+
+The final model uses a batch size of 2, learning rate of 1e-4, keep probability of .5 and runs for 10 epochs. The loss decreases over time, probably running for more epochs will improve the results. It took 38 minutes in a g3.4xlarge instance from Amazon with a NVIDIA Tesla M60 GPU to train.
+
+![alt text](results/loss.png)
+
+It uses Adam Optimizer and L2 regularization. On the second epoch results looked like this:
+
+![alt text](results/um_000017-2.png)
+
+But it got much better (epoch number 10):
+
+![alt text](results/um_000017-10.png)
+
+
